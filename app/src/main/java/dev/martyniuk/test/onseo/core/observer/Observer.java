@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.additional.observer;
+package dev.martyniuk.test.onseo.core.observer;
 
 public interface Observer<T> {
     void notify(T value);

@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.gateway.assets.dto;
+package dev.martyniuk.test.onseo.data.assets.dto;
 
 public class PeriodAssetDto {
     private String id;

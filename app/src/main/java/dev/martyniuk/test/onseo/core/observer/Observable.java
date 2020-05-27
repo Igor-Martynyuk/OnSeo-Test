@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.additional.observer;
+package dev.martyniuk.test.onseo.core.observer;
 
 import java.util.ArrayList;
 import java.util.List;
