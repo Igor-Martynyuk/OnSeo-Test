@@ -1,7 +1,7 @@
-package dev.martyniuk.test.onseo.data.assets.gateway;
+package dev.martyniuk.test.onseo.gateway.assets.main;
 
 import dev.martyniuk.test.onseo.core.observer.Observer;
-import dev.martyniuk.test.onseo.data.assets.dto.EventAssetDto;
+import dev.martyniuk.test.onseo.gateway.assets.dto.EventAssetDto;
 
 public interface GatewayAssets {
     void updateEvents() throws Exception;

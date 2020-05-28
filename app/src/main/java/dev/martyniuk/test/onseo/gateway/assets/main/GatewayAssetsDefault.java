@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.data.assets.gateway;
+package dev.martyniuk.test.onseo.gateway.assets.main;
 
 import android.content.res.AssetManager;
 
@@ -17,10 +17,10 @@ import java.util.Map;
 
 import dev.martyniuk.test.onseo.core.observer.Observable;
 import dev.martyniuk.test.onseo.core.observer.Observer;
-import dev.martyniuk.test.onseo.data.assets.dto.EventAssetDto;
-import dev.martyniuk.test.onseo.data.assets.dto.ParticipantAssetDto;
-import dev.martyniuk.test.onseo.data.assets.dto.PeriodAssetDto;
-import dev.martyniuk.test.onseo.data.assets.dto.ScoreboardAssetDto;
+import dev.martyniuk.test.onseo.gateway.assets.dto.EventAssetDto;
+import dev.martyniuk.test.onseo.gateway.assets.dto.ParticipantAssetDto;
+import dev.martyniuk.test.onseo.gateway.assets.dto.PeriodAssetDto;
+import dev.martyniuk.test.onseo.gateway.assets.dto.ScoreboardAssetDto;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class GatewayAssetsDefault implements GatewayAssets {

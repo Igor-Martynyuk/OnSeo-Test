@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.data.assets.dto;
+package dev.martyniuk.test.onseo.gateway.assets.dto;
 
 public class ParticipantAssetDto {
     private String id;
@@ -10,10 +10,10 @@ public class ParticipantAssetDto {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }

@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.data.assets.dto;
+package dev.martyniuk.test.onseo.gateway.assets.dto;
 
 import java.util.List;
 import java.util.Map;
@@ -10,9 +10,9 @@ public class ScoreboardAssetDto {
     private Map<String, Map<String, List<String>>> scores;
 
     public ScoreboardAssetDto(String eventId,
-                  String sportId,
-                  PeriodAssetDto period,
-                  Map<String, Map<String, List<String>>> scores) {
+                              String sportId,
+                              PeriodAssetDto period,
+                              Map<String, Map<String, List<String>>> scores) {
 
         this.eventId = eventId;
         this.sportId = sportId;
@@ -21,18 +21,18 @@ public class ScoreboardAssetDto {
     }
 
     public String getEventId() {
-        return eventId;
+        return this.eventId;
     }
 
     public String getSportId() {
-        return sportId;
+        return this.sportId;
     }
 
     public PeriodAssetDto getPeriod() {
-        return period;
+        return this.period;
     }
 
     public Map<String, Map<String, List<String>>> getScores() {
-        return scores;
+        return this.scores;
     }
 }

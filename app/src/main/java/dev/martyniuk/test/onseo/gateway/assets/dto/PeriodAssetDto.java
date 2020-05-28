@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.data.assets.dto;
+package dev.martyniuk.test.onseo.gateway.assets.dto;
 
 public class PeriodAssetDto {
     private String id;
@@ -12,14 +12,14 @@ public class PeriodAssetDto {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getNameFull() {
-        return nameFull;
+        return this.nameFull;
     }
 
     public String getNameShort() {
-        return nameShort;
+        return this.nameShort;
     }
 }

@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.data.assets.dto;
+package dev.martyniuk.test.onseo.gateway.assets.dto;
 
 import java.util.List;
 
@@ -8,54 +8,58 @@ public class EventAssetDto {
     private String name;
     private String startTime;
     private String type;
-    private boolean inplay;
+    private boolean isInPlay;
     private List<ParticipantAssetDto> participants;
     private ScoreboardAssetDto scoreboard;
 
     public EventAssetDto(String id,
-                    String sportId,
-                    String name,
-                    String startTime,
-                    String type,
-                    boolean inplay,
-                    List<ParticipantAssetDto> participants,
-                    ScoreboardAssetDto scoreboard) {
+                         String sportId,
+                         String name,
+                         String startTime,
+                         String type,
+                         boolean inplay,
+                         List<ParticipantAssetDto> participants,
+                         ScoreboardAssetDto scoreboard) {
 
         this.id = id;
         this.sportId = sportId;
         this.name = name;
         this.startTime = startTime;
         this.type = type;
-        this.inplay = inplay;
+        this.isInPlay = inplay;
         this.participants = participants;
         this.scoreboard = scoreboard;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getSportId() {
-        return sportId;
+        return this.sportId;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public boolean getInplay() {
-        return inplay;
+    public boolean isInPlay() {
+        return this.isInPlay;
     }
 
     public List<ParticipantAssetDto> getParticipants() {
-        return participants;
+        return this.participants;
+    }
+
+    public ScoreboardAssetDto getScoreboard() {
+        return this.scoreboard;
     }
 }
