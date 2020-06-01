@@ -81,40 +81,44 @@ public class UseCaseUpdateEvents implements UseCase {
         if (this.isInProgress) return;
 
         this.isInProgress = true;
-        new Thread() {
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        notifyStarted();
 
-            @Override
-            public synchronized void start() {
-                super.start();
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-                notifyStarted();
+                        try {
+                            for (DtoEventAsset dto : assets.loadEvents()) {
 
-                try {
-                    for (DtoEventAsset dto : assets.loadEvents()) {
+                                switch (dto.getSportId()) {
+                                    case DtoEventAsset.ID_FORMULA_1:
+                                        model.addEvent(new EventFormula1(dto));
+                                        break;
+                                    case DtoEventAsset.ID_SOCCER:
+                                        model.addEvent(new EventSoccer(dto));
+                                        break;
+                                    case DtoEventAsset.ID_TENNIS:
+                                        model.addEvent(new EventTennis(dto));
+                                        break;
+                                    case DtoEventAsset.ID_VOLLEYBALL:
+                                        model.addEvent(new EventValleyBall(dto));
+                                        break;
+                                }
+                            }
 
-                        switch (dto.getSportId()) {
-                            case DtoEventAsset.ID_FORMULA_1:
-                                model.addEvent(new EventFormula1(dto));
-                                break;
-                            case DtoEventAsset.ID_SOCCER:
-                                model.addEvent(new EventSoccer(dto));
-                                break;
-                            case DtoEventAsset.ID_TENNIS:
-                                model.addEvent(new EventTennis(dto));
-                                break;
-                            case DtoEventAsset.ID_VOLLEYBALL:
-                                model.addEvent(new EventValleyBall(dto));
-                                break;
+                            notifySuccess();
+                        } catch (Exception e) {
+                            notifyError(e);
                         }
                     }
-
-                    notifySuccess();
-                } catch (Exception e) {
-                    notifyError(e);
                 }
-            }
-
-        }.start();
+        ).start();
     }
 
     public interface CallBack {
