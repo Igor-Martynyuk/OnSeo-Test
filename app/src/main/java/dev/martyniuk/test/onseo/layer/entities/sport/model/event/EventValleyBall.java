@@ -1,8 +1,8 @@
-package dev.martyniuk.test.onseo.layer.entities.model.event;
+package dev.martyniuk.test.onseo.layer.entities.sport.model.event;
 
 import java.text.ParseException;
 
-import dev.martyniuk.test.onseo.layer.entities.model.participant.impl.ParticipantValleyBall;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.participant.impl.ParticipantValleyBall;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoEventAsset;
 
 public class EventValleyBall extends Event<ParticipantValleyBall> {

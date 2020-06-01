@@ -1,10 +1,10 @@
-package dev.martyniuk.test.onseo.layer.entities.model.participant.abstaction;
+package dev.martyniuk.test.onseo.layer.entities.sport.model.participant.abstaction;
 
 import java.util.List;
 import java.util.Objects;
 
-import dev.martyniuk.test.onseo.layer.entities.model.Distance;
-import dev.martyniuk.test.onseo.layer.entities.model.Result;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.Distance;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.Result;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoParticipantAsset;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoScoreboardAsset;
 

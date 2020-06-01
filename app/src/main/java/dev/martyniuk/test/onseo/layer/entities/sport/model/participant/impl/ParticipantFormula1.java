@@ -1,7 +1,7 @@
-package dev.martyniuk.test.onseo.layer.entities.model.participant.impl;
+package dev.martyniuk.test.onseo.layer.entities.sport.model.participant.impl;
 
-import dev.martyniuk.test.onseo.layer.entities.model.Distance;
-import dev.martyniuk.test.onseo.layer.entities.model.participant.abstaction.ParticipantTournament;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.Distance;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.participant.abstaction.ParticipantTournament;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoParticipantAsset;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoScoreboardAsset;
 

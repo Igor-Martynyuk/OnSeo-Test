@@ -1,11 +1,11 @@
-package dev.martyniuk.test.onseo.layer.entities.model.event;
+package dev.martyniuk.test.onseo.layer.entities.sport.model.event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import dev.martyniuk.test.onseo.layer.entities.model.participant.abstaction.Participant;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.participant.abstaction.Participant;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoEventAsset;
 
 public abstract class Event<T extends Participant> {

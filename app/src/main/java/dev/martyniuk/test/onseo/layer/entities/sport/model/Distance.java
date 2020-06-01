@@ -1,4 +1,4 @@
-package dev.martyniuk.test.onseo.layer.entities.model;
+package dev.martyniuk.test.onseo.layer.entities.sport.model;
 
 public class Distance {
     private String id;
