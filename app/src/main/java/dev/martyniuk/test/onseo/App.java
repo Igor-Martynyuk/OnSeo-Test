@@ -2,7 +2,7 @@ package dev.martyniuk.test.onseo;
 
 import android.app.Application;
 
-import dev.martyniuk.test.onseo.gateway.assets.main.GatewayAssetsDefault;
+import dev.martyniuk.test.onseo.layer.gateway.assets.main.GatewayAssetsDefault;
 
 public class App extends Application{
 
