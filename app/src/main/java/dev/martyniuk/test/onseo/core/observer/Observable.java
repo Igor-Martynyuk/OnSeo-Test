@@ -7,15 +7,15 @@ public class Observable<T> {
     private List<Observer<T>> observers = new ArrayList<>();
 
     public void subscribe(Observer<T> observer) {
-        observers.add(observer);
+        this.observers.add(observer);
     }
 
     public void unsubscribe(Observer<T> observer) {
-        observers.remove(observer);
+        this.observers.remove(observer);
     }
 
     public void notify(T value) {
-        for (Observer<T> observer : observers) {
+        for (Observer<T> observer : this.observers) {
             observer.notify(value);
         }
     }

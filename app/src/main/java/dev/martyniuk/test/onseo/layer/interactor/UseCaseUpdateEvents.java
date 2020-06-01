@@ -1,11 +1,13 @@
 package dev.martyniuk.test.onseo.layer.interactor;
 
 import android.os.Handler;
+import android.os.Looper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dev.martyniuk.test.onseo.layer.entities.sport.holder.SportDataHolder;
+import dev.martyniuk.test.onseo.layer.entities.sport.model.event.Event;
 import dev.martyniuk.test.onseo.layer.entities.sport.model.event.EventFormula1;
 import dev.martyniuk.test.onseo.layer.entities.sport.model.event.EventSoccer;
 import dev.martyniuk.test.onseo.layer.entities.sport.model.event.EventTennis;
@@ -13,18 +15,18 @@ import dev.martyniuk.test.onseo.layer.entities.sport.model.event.EventValleyBall
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoEventAsset;
 import dev.martyniuk.test.onseo.layer.gateway.assets.main.GatewayAssets;
 
-public class UseCaseUpdateEvents implements UseCase {
+public class UseCaseUpdateEvents {
     private GatewayAssets assets;
     private SportDataHolder model;
     private List<CallBack> callBacks;
-    private Handler handler;
-    private boolean isInProgress;
+    protected Handler handler;
+    protected boolean isInProgress;
 
     public UseCaseUpdateEvents(GatewayAssets assets, SportDataHolder model) {
         this.assets = assets;
         this.model = model;
         this.callBacks = new ArrayList<>();
-        this.handler = new Handler();
+        this.handler = new Handler(Looper.getMainLooper());
     }
 
     public void subscribe(CallBack callBack) {
@@ -76,7 +78,6 @@ public class UseCaseUpdateEvents implements UseCase {
         );
     }
 
-    @Override
     public void invoke() {
         if (this.isInProgress) return;
 
@@ -85,6 +86,8 @@ public class UseCaseUpdateEvents implements UseCase {
                 new Runnable() {
                     @Override
                     public void run() {
+                        Looper.prepare();
+
                         notifyStarted();
 
                         try {
@@ -94,22 +97,35 @@ public class UseCaseUpdateEvents implements UseCase {
                         }
 
                         try {
-                            for (DtoEventAsset dto : assets.loadEvents()) {
+                            for (final DtoEventAsset dto : assets.loadEvents()) {
 
+                                final Event event;
                                 switch (dto.getSportId()) {
                                     case DtoEventAsset.ID_FORMULA_1:
-                                        model.addEvent(new EventFormula1(dto));
+                                        event = new EventFormula1(dto);
                                         break;
                                     case DtoEventAsset.ID_SOCCER:
-                                        model.addEvent(new EventSoccer(dto));
+                                        event = new EventSoccer(dto);
                                         break;
                                     case DtoEventAsset.ID_TENNIS:
-                                        model.addEvent(new EventTennis(dto));
+                                        event = new EventTennis(dto);
                                         break;
                                     case DtoEventAsset.ID_VOLLEYBALL:
-                                        model.addEvent(new EventValleyBall(dto));
+                                        event = new EventValleyBall(dto);
                                         break;
+                                    default:
+                                        throw new RuntimeException("Unresolved event");
                                 }
+
+                                handler.post(
+                                        new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                model.addEvent(event);
+                                            }
+                                        }
+                                );
+
                             }
 
                             notifySuccess();
