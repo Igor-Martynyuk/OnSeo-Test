@@ -2,6 +2,7 @@ package dev.martyniuk.test.onseo.layer.entities.sport.model.event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,7 +29,7 @@ public abstract class Event<T extends Participant> {
                 .getTime();
 
         this.currentPeriod = dto.getScoreboard().getPeriod().getNameFull();
-
+        this.participants = new ArrayList<>();
 
     }
 

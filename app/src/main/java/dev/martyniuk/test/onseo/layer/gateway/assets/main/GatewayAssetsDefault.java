@@ -15,8 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import dev.martyniuk.test.onseo.core.observer.Observable;
-import dev.martyniuk.test.onseo.core.observer.Observer;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoEventAsset;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoParticipantAsset;
 import dev.martyniuk.test.onseo.layer.gateway.assets.dto.DtoPeriodAsset;
@@ -38,11 +36,9 @@ public class GatewayAssetsDefault implements GatewayAssets {
     private final String KEY_SCORES = "scores";
 
     private AssetManager assets;
-    private Observable<DtoEventAsset> eventsObservable;
 
     public GatewayAssetsDefault(AssetManager assets) {
         this.assets = assets;
-        this.eventsObservable = new Observable<>();
     }
 
     private List<DtoParticipantAsset> parseParticipants(JSONObject eventJson) throws JSONException {
@@ -129,31 +125,15 @@ public class GatewayAssetsDefault implements GatewayAssets {
     }
 
     @Override
-    public void updateEvents() throws Exception {
+    public List<DtoEventAsset> loadEvents() throws Exception {
         try (InputStream input = assets.open("events_stub.json")) {
             byte[] buffer = new byte[input.available()];
 
             if (input.read(buffer) == buffer.length) {
-                for (DtoEventAsset event : parseEvents(new String(buffer, StandardCharsets.UTF_8))) {
-                    this.eventsObservable.notify(event);
-                }
-
-                return;
+                return parseEvents(new String(buffer, StandardCharsets.UTF_8));
             }
 
             throw new IOException("Source read failed");
         }
     }
-
-    @Override
-    public void subscribeEvents(Observer<DtoEventAsset> observer) {
-        this.eventsObservable.subscribe(observer);
-    }
-
-    @Override
-    public void unSubscribeEvents(Observer<DtoEventAsset> observer) {
-        this.eventsObservable.unsubscribe(observer);
-    }
-
-
 }
